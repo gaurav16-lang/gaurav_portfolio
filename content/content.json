@@ -1,0 +1,95 @@
+{
+  "hero": {
+    "name": "Gaurav Maihuria",
+    "title": "Full-Stack Web Developer",
+    "tagline": "I build scalable web applications with the MERN stack and AWS, turning complex problems into reliable, maintainable software.",
+    "avatarUrl": "/avatar.jpg"
+  },
+  "about": {
+    "bio": "Highly motivated and results-oriented Full-Stack Web Developer with expertise in MERN stack technologies and cloud services (AWS). I design, develop, and optimize scalable web applications, with hands-on experience spanning system architecture, database schema design, and end-to-end feature delivery.\n\nAt Tricog Health, I've led the development of a cardiac care platform from scratch, migrated a legacy Angular admin portal to the MERN stack, and built microservices for audit logging, OCR extraction, and real-time health data integration with devices like Apple Watch and Omron monitors.\n\nI'm looking to leverage strong technical skills and problem-solving ability to drive impactful solutions in a challenging engineering environment.",
+    "location": "Bangalore, Karnataka",
+    "email": "maihuriagaurav16@gmail.com",
+    "socialLinks": [
+      { "label": "GitHub", "url": "https://github.com/gaurav16-lang" },
+      { "label": "LinkedIn", "url": "https://linkedin.com/in/gaurav-maihuria" },
+      { "label": "Portfolio", "url": "https://gauravmaihuria.dorik.io" },
+      { "label": "LeetCode", "url": "https://leetcode.com/u/gaurav8081" }
+    ]
+  },
+  "experience": {
+    "items": [
+      {
+        "company": "Tricog Health India",
+        "role": "Software Engineer",
+        "period": "Mar 2022 - Present",
+        "highlights": [
+          "Led the end-to-end development of the Tricare platform from scratch, including system architecture, database schema modeling, and feature implementation.",
+          "Spearheaded the migration of the Atlas Admin Portal (TLAS) from Angular to the MERN stack, improving dashboard performance and maintainability.",
+          "Architected secure authentication and authorization flows with AWS Cognito for role-based access control across the TCC platform.",
+          "Integrated Omron, Agora, and Exotel APIs for real-time health data sync, video calling, and click-to-call functionality.",
+          "Optimized backend APIs and system architecture, reducing response latency and improving scalability under increasing load.",
+          "Mentored junior engineers through structured code reviews and technical sessions."
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "items": [
+      {
+        "title": "Keebo Health",
+        "description": "An advanced connected cardiac care platform built with OMRON Healthcare to transform remote heart condition monitoring and management.",
+        "tags": ["NestJS", "React"],
+        "link": ""
+      },
+      {
+        "title": "Care-Platform",
+        "description": "A care platform that turns cardiac data and AI insights into continuous patient care, used by doctors and care teams to monitor patients, review alerts, and coordinate follow-up.",
+        "tags": ["React"],
+        "link": ""
+      },
+      {
+        "title": "Saas-Admin",
+        "description": "A SaaS admin console for centrally managing hospitals, users, and devices, handling configuration without code changes while ensuring data isolation and compliance.",
+        "tags": ["NestJS", "React"],
+        "link": ""
+      }
+    ]
+  },
+  "skills": {
+    "items": [
+      "React.js",
+      "Node.js",
+      "TypeScript",
+      "JavaScript",
+      "Express.js",
+      "MongoDB",
+      "SQL",
+      "RESTful APIs",
+      "Microservices",
+      "AWS (EC2, Lambda, Auto Scaling, ELB, S3, Cognito, IAM, CloudWatch, Route 53)",
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
+      "Redux",
+      "System Design (HLD + LLD)"
+    ]
+  },
+  "education": {
+    "items": [
+      {
+        "school": "Masai School, Bangalore",
+        "degree": "Full-Stack Development Certificate",
+        "period": "Jun 2021 - Mar 2022"
+      },
+      {
+        "school": "RGPV University, Bhopal",
+        "degree": "Bachelor of Engineering in Computer Science & Engineering",
+        "period": "Aug 2016 - Dec 2020"
+      }
+    ]
+  },
+  "contact": {
+    "heading": "Let's work together",
+    "message": "I'm always open to discussing new projects, opportunities, or ways to help bring your ideas to life. Feel free to reach out."
+  }
+}
