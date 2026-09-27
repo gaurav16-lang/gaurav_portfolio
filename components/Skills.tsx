@@ -1,19 +1,33 @@
-import { Section } from '@/components/Section';
-import { Reveal } from '@/components/Reveal';
-import type { PortfolioContent } from '@/types/content';
+import { skillGroups } from "@/lib/data";
+import Reveal from "./Reveal";
 
-export function Skills({ skills }: { skills: PortfolioContent['skills'] }) {
+export default function Skills() {
   return (
-    <Section id="skills" eyebrow="Skills" title="Tools I work with">
-      <div className="flex flex-wrap gap-2">
-        {skills.items.map((skill, index) => (
-          <Reveal key={skill} delayMs={index * 40}>
-            <span className="inline-block rounded-md border border-(--color-border) px-3 py-1.5 text-sm text-(--color-foreground) transition-all duration-200 hover:-translate-y-0.5 hover:border-(--color-primary) hover:text-(--color-primary)">
-              {skill}
-            </span>
+    <section id="skills" className="mx-auto max-w-6xl px-6 py-24 sm:px-8">
+      <Reveal>
+        <span className="font-mono text-xs uppercase tracking-widest text-accent">Skills</span>
+        <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Tools of the trade</h2>
+      </Reveal>
+
+      <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2">
+        {skillGroups.map((group, i) => (
+          <Reveal key={group.label} delay={i * 0.08}>
+            <div className="h-full rounded-2xl border border-border bg-surface p-6">
+              <h3 className="text-sm font-medium text-foreground">{group.label}</h3>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-border bg-surface-2 px-3 py-1 text-xs text-muted"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
           </Reveal>
         ))}
       </div>
-    </Section>
+    </section>
   );
 }

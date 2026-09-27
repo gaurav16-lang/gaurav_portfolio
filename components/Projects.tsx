@@ -1,44 +1,66 @@
-import { Section } from '@/components/Section';
-import { Reveal } from '@/components/Reveal';
-import type { PortfolioContent } from '@/types/content';
+import { ArrowUpRight } from "lucide-react";
+import { projects } from "@/lib/data";
+import Reveal from "./Reveal";
 
-export function Projects({ projects }: { projects: PortfolioContent['projects'] }) {
+export default function Projects() {
   return (
-    <Section id="projects" eyebrow="Projects" title="What I've built">
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-        {projects.items.map((project, index) => {
-          const card = (
-            <div className="h-full rounded-lg border border-(--color-border) p-5 transition-all duration-300 hover:-translate-y-1 hover:border-(--color-primary) hover:shadow-lg hover:shadow-(--color-primary)/10">
-              <h3 className="text-base font-semibold text-(--color-foreground)">{project.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-(--color-muted)">{project.description}</p>
-              {project.tags.length > 0 ? (
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-(--color-border) px-2.5 py-0.5 font-mono text-xs text-(--color-muted)"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          );
+    <section id="projects" className="mx-auto max-w-6xl px-6 py-24 sm:px-8">
+      <Reveal>
+        <span className="font-mono text-xs uppercase tracking-widest text-accent">Projects</span>
+        <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Things I&apos;ve built</h2>
+      </Reveal>
 
-          return (
-            <Reveal key={index} delayMs={index * 80}>
-              {project.link ? (
-                <a href={project.link} target="_blank" rel="noopener noreferrer">
-                  {card}
-                </a>
-              ) : (
-                card
-              )}
-            </Reveal>
-          );
-        })}
+      <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        {projects.map((project, i) => (
+          <Reveal key={project.name} delay={i * 0.08}>
+            <div
+              className={`group h-full rounded-2xl border p-7 transition-colors ${
+                project.featured
+                  ? "border-accent/40 bg-surface"
+                  : "border-border bg-surface hover:border-accent/40"
+              }`}
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-xl font-medium">{project.name}</h3>
+                    {project.featured && (
+                      <span className="rounded-full bg-accent/15 px-2.5 py-0.5 text-[11px] font-medium text-accent">
+                        Featured
+                      </span>
+                    )}
+                  </div>
+                  <p className="mt-1 text-sm text-muted">{project.role}</p>
+                </div>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Visit ${project.name}`}
+                    className="shrink-0 rounded-full border border-border p-2 text-muted transition-colors group-hover:border-accent group-hover:text-accent"
+                  >
+                    <ArrowUpRight size={16} />
+                  </a>
+                )}
+              </div>
+
+              <p className="mt-4 text-sm leading-relaxed text-muted">{project.description}</p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {project.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full border border-border bg-surface-2 px-3 py-1 font-mono text-[11px] text-muted"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        ))}
       </div>
-    </Section>
+    </section>
   );
 }

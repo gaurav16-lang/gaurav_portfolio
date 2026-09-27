@@ -1,60 +1,147 @@
-import type { PortfolioContent } from '@/types/content';
+"use client";
 
-export function Hero({ hero }: { hero: PortfolioContent['hero'] }) {
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { ArrowRight, Mail } from "lucide-react";
+import { profile } from "@/lib/data";
+import { GithubIcon, LinkedinIcon } from "./icons";
+
+export default function Hero() {
   return (
-    <header className="relative mx-auto flex w-full max-w-3xl flex-col items-start gap-6 overflow-hidden px-6 py-24 sm:px-8">
+    <section id="top" className="relative overflow-hidden pt-36 pb-24 sm:pt-44 sm:pb-32">
+      <div className="bg-grid pointer-events-none absolute inset-0 -z-10 h-[560px] w-full" />
       <div
         aria-hidden
-        className="animate-blob pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-(--color-primary)/20 blur-3xl"
+        className="animate-float pointer-events-none absolute -top-24 right-0 -z-10 h-72 w-72 rounded-full opacity-20 blur-3xl sm:h-96 sm:w-96"
+        style={{ background: "radial-gradient(circle, var(--accent), transparent 70%)" }}
       />
       <div
         aria-hidden
-        style={{ animationDelay: '4s' }}
-        className="animate-blob pointer-events-none absolute top-24 -right-16 h-64 w-64 rounded-full bg-(--color-primary)/10 blur-3xl"
+        className="pointer-events-none absolute -top-10 left-0 -z-10 h-72 w-72 rounded-full opacity-10 blur-3xl"
+        style={{ background: "radial-gradient(circle, var(--accent-2), transparent 70%)" }}
       />
 
-      {hero.avatarUrl ? (
-        <div className="animate-fade-in-up relative h-28 w-28">
-          <span className="animate-pulse-ring absolute inset-0 rounded-full" aria-hidden />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={hero.avatarUrl}
-            alt={hero.name}
-            className="relative h-28 w-28 rounded-full border-2 border-(--color-primary)/40 object-cover shadow-lg shadow-(--color-primary)/10 transition-transform duration-300 hover:scale-105"
-          />
+      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
+        <div>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 font-mono text-xs text-muted"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-accent-2" />
+            Open to impactful engineering roles
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.05 }}
+            className="max-w-3xl text-4xl font-semibold leading-[1.1] tracking-tight sm:text-6xl"
+          >
+            {profile.name}
+            <span className="mt-2 block text-2xl font-medium text-gradient sm:text-4xl">
+              {profile.title}
+            </span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
+          >
+            {profile.summary}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="mt-9 flex flex-wrap items-center gap-4"
+          >
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-transform hover:scale-[1.03]"
+            >
+              View my work
+              <ArrowRight size={16} />
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+            >
+              Get in touch
+            </a>
+
+            <div className="ml-1 flex items-center gap-3 text-muted">
+              <a
+                href={profile.links.github}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub"
+                className="transition-colors hover:text-foreground"
+              >
+                <GithubIcon size={19} />
+              </a>
+              <a
+                href={profile.links.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                className="transition-colors hover:text-foreground"
+              >
+                <LinkedinIcon size={19} />
+              </a>
+              <a
+                href={`mailto:${profile.email}`}
+                aria-label="Email"
+                className="transition-colors hover:text-foreground"
+              >
+                <Mail size={19} />
+              </a>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-16 flex flex-wrap gap-x-10 gap-y-3 border-t border-border pt-8 text-sm text-muted"
+          >
+            <span>{profile.location}</span>
+            <span className="hidden sm:inline">·</span>
+            <span>Building production systems since 2022</span>
+            <span className="hidden sm:inline">·</span>
+            <span>MERN · NestJS · AWS</span>
+          </motion.div>
         </div>
-      ) : null}
 
-      <div>
-        <h1
-          className="animate-fade-in-up text-4xl font-bold tracking-tight text-(--color-foreground) sm:text-5xl"
-          style={{ animationDelay: '100ms' }}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.94 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="relative mx-auto w-full max-w-xs lg:max-w-sm"
         >
-          {hero.name}
-        </h1>
-        <p
-          className="animate-fade-in-up mt-2 font-mono text-lg text-(--color-primary)"
-          style={{ animationDelay: '220ms' }}
-        >
-          {hero.title}
-        </p>
-        <p
-          className="animate-fade-in-up mt-4 max-w-xl text-base text-(--color-muted) sm:text-lg"
-          style={{ animationDelay: '340ms' }}
-        >
-          {hero.tagline}
-        </p>
+          <div
+            aria-hidden
+            className="animate-float pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] opacity-40 blur-2xl"
+            style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-2))" }}
+          />
+          <div className="overflow-hidden rounded-[1.75rem] border border-border bg-surface p-2 shadow-2xl">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.4rem]">
+              <Image
+                src="/profile.jpg"
+                alt={profile.name}
+                fill
+                priority
+                sizes="(min-width: 1024px) 380px, 320px"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </motion.div>
       </div>
-
-      <a
-        href="#about"
-        aria-label="Scroll to about section"
-        className="animate-bounce-slow absolute bottom-2 left-1/2 -translate-x-1/2 text-(--color-muted) transition-colors hover:text-(--color-primary)"
-      >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </a>
-    </header>
+    </section>
   );
 }
